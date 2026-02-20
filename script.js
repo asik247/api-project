@@ -86,6 +86,11 @@ const learnVocabularies = async () =>{
     }
 }
 // show display all lession;
+// {
+//     "id": 101,
+//     "level_no": 1,
+//     "lessonName": "Basic Vocabulary"
+// }
 const showAllLessions = (lessions) =>{
     const lessionContainer = document.getElementById("lessionContainer");
     lessionContainer.innerHTML = '';
@@ -94,7 +99,7 @@ const showAllLessions = (lessions) =>{
         const div = document.createElement("div");
         div.innerHTML = `
             <button  class="btn btn-outline btn-primary"><i class="fa-solid  fa-book-open-reader"></i>
-             Lession</button>
+             Lession - ${lession.level_no}</button>
         `
         lessionContainer.appendChild(div)
     }
