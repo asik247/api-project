@@ -40,19 +40,31 @@ subMitBtn.addEventListener("click", (e) => {
     e.preventDefault();
     const name = getInputFieldValue("name")
     const email = getInputFieldValue("email")
-    // console.log(name,email);
+    console.log(name, email);
     // name validation code;
-    if(name !==yourName){
+    if (name !== yourName) {
         alert("Name not match")
         return;
     }
     // email validation code here;
-    if(email !== yourEmail){
+    if (email !== yourEmail) {
         // console.log("success");
         alert("please provide right email")
-    }else{
+    } else {
         alert("Submit Successfully")
     }
+    let container = document.getElementById("container");
+    container.innerHTML = '';
+    let div = document.createElement("div");
+    div.innerHTML = `
+    
+       <div class="border-2 border-gray-500">
+            <h2>${name}</h2>
+            <p>${email}</p>
+        </div>
+    
+    `
+    container.appendChild(div)
 
 
 })
