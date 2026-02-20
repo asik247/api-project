@@ -75,4 +75,29 @@ const getInputFieldValue = (id) => {
     return document.getElementById(id).value
 }
 
-console.log("hi");
+// Learn Vocabularies code start hre;
+const learnVocabularies = async () =>{
+    try{
+        const res = await fetch("https://openapi.programming-hero.com/api/levels/all");
+        const lession = await res.json();
+       showAllLessions(lession.data);
+    }catch(error){
+        console.log("Error Message",error);
+    }
+}
+// show display all lession;
+const showAllLessions = (lessions) =>{
+    const lessionContainer = document.getElementById("lessionContainer");
+    lessionContainer.innerHTML = '';
+    for(const lession of lessions){
+        console.log(lession);
+        const div = document.createElement("div");
+        div.innerHTML = `
+            <button  class="btn btn-outline btn-primary"><i class="fa-solid  fa-book-open-reader"></i>
+             Lession</button>
+        `
+        lessionContainer.appendChild(div)
+    }
+}
+learnVocabularies()
+// Learn Vocabularies code end hre;
