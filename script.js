@@ -98,11 +98,36 @@ const showAllLessions = (lessions) =>{
         console.log(lession);
         const div = document.createElement("div");
         div.innerHTML = `
-            <button  class="btn btn-outline btn-primary"><i class="fa-solid  fa-book-open-reader"></i>
+            <button  class="levelBtn btn btn-outline btn-primary"><i class="fa-solid  fa-book-open-reader"></i>
              Lession - ${lession.level_no}</button>
         `
+        // div.querySelector(".levelBtn").addEventListener("click",()=>{
+        //     console.log("Clicked Level:",lession.level_no);
+        // })
         lessionContainer.appendChild(div)
     }
 }
 learnVocabularies()
 // Learn Vocabularies code end hre;
+
+
+// levelBtn code start here;
+let levelBtn = document.querySelector(".levelBtn");
+levelBtn.addEventListener("click",()=>{
+    console.log("levelBtn clicked: not worked");
+})
+/*
+Enent Delegation + level btn clicked
+document.getElementById("lessionContainer")
+.addEventListener("click", function(e){
+
+    if(e.target.closest(".levelBtn")){
+        console.log("Level button clicked");
+    }
+
+});
+// another way;
+div.querySelector(".levelBtn").addEventListener("click", ()=>{
+    console.log("Clicked Level:", lession.level_no);
+});
+*/
