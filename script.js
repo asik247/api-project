@@ -53,18 +53,18 @@ subMitBtn.addEventListener("click", (e) => {
     } else {
         alert("Submit Successfully")
     }
-    let container = document.getElementById("container");
-    container.innerHTML = '';
-    let div = document.createElement("div");
-    div.innerHTML = `
+    // let container = document.getElementById("container");
+    // container.innerHTML = '';
+    // let div = document.createElement("div");
+    // div.innerHTML = `
     
-       <div class="border-2 border-gray-500">
-            <h2>${name}</h2>
-            <p>${email}</p>
-        </div>
+    //    <div class="border-2 border-gray-500">
+    //         <h2>${name}</h2>
+    //         <p>${email}</p>
+    //     </div>
     
-    `
-    container.appendChild(div)
+    // `
+    // container.appendChild(div)
 
 
 })
@@ -74,3 +74,5 @@ subMitBtn.addEventListener("click", (e) => {
 const getInputFieldValue = (id) => {
     return document.getElementById(id).value
 }
+
+console.log("hi");
