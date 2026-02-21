@@ -100,8 +100,12 @@ const showAllLessions = (lessions) => {
 
         const div = document.createElement("div");
         div.innerHTML = `
-            <button  class="levelBtn btn btn-outline btn-primary"><i class="fa-solid  fa-book-open-reader"></i>
-            <span> Lession - ${lession.level_no}</span> </button>
+            <button  class="levelBtn btn btn-outline btn-primary">
+            <i class="fa-solid  fa-book-open-reader"></i>
+
+            <span> Lession - ${lession.level_no}</span> 
+            
+            </button>
         `
         // div.querySelector(".levelBtn").addEventListener("click",()=>{
         //     console.log("Clicked Level:",lession.level_no);
@@ -118,12 +122,14 @@ learnVocabularies()
 const eventDelegtion = (lession) => {
     document.getElementById("lessionContainer").addEventListener("click", (e) => {
         // closest sata code;
+        // console.log("clicked contanier",e.target);
         // if(e.target.classList.contains("levelBtn")){
-        //     console.log("level btn licked Not closest",e.target);
+        //     console.log("level btn licked",e.target);
         // }
-        if (e.target.closest(".levelBtn")) {
-            console.log("level btn clicked", e.target);
-        }
+
+        // if (e.target.closest(".levelBtn")) {
+        //     console.log("level btn clicked", e.target);
+        // }
     })
 }
 eventDelegtion()
