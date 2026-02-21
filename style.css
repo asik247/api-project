@@ -10,5 +10,10 @@
   font-family: "Hind Siliguri", sans-serif;
   font-weight: 500;
   font-style: normal;
-  text-transform: ;
+  /* text-transform: ; */
+}
+
+.active-btn {
+    background-color: #2563eb !important;
+    color: white !important;
 }

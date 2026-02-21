@@ -98,42 +98,37 @@ const showAllLessions = (lessions) => {
 
         const div = document.createElement("div");
         div.innerHTML = `
-            <button id="lessionBtn" onclick="loadLevelWord(${lession.level_no})" class="levelBtn btn btn-outline btn-primary">
+            <button id="lessionBtn-${lession.level_no}" onclick="loadLevelWord(${lession.level_no})" class="levelBtn btn btn-outline btn-primary">
             <i class="fa-solid  fa-book-open-reader"></i>
             <span> Lession - ${lession.level_no}</span> 
             
             </button>
         `
-        // active btn toggling code start here;
-        // const btn = document.querySelector(".levelBtn");
-        // btn.addEventListener("click",()=>{
-        //     // console.log("all btn");
-        //     const allBtns = document.querySelectorAll(".levelBtn");
-        //     allBtns.forEach(b=>{
-        //         b.classList.remove("avtive-btn");
-        //         console.log(b);
-
-        //     })
-        //     btn.classList.add("active-btn");
-        //     loadLevelWord(lession.level_no)
-        // })
-        // active btn toggling end start here;
-
-        // div.querySelector(".levelBtn").addEventListener("click",()=>{
-        //     console.log(lession.level_no);
-        // })
         lessionContainer.appendChild(div)
     }
 }
 learnVocabularies()
 // Level Word code start here;
 const loadLevelWord = async (id) => {
+    // console.log("lession");
     try {
-        const res = await fetch(`https://openapi.programming-hero.com/api/level/${id}`)
-        // console.log(res);
+        // Active btn code start here✅✅✅;
+        const levelBtn = document.querySelectorAll(".levelBtn");
+        // console.log(levelBtn);
+        levelBtn.forEach(btn=>{
+            // console.log(btn);
+            btn.classList.remove("active-btn")
+        })
+        const lessionBtn = document.getElementById(`lessionBtn-${id}`);
+        if(lessionBtn){
+            lessionBtn.classList.add("active-btn")
+        }
+        // Active btn code end here✅✅✅;
+        const res = await fetch(`https://openapi.programming-hero.com/api/level/${id}`);
         const allWord = await res.json();
-        console.log(allWord.data);
+
         loadLevelWordDisplay(allWord.data);
+
     } catch (error) {
         console.log(error);
     }
@@ -146,7 +141,7 @@ const loadLevelWordDisplay = (elements) => {
     if (elements.length == 0) {
         levelWordContainer.innerHTML = `
             <div class="flex justify-center items-center col-span-full">
-                <img src="./assets/alert-error.png" alt="" class="w-32">
+                <img src="./assets/alert-error.png" alt="" class="w-28">
             </div>
            <div class="flex items-center justify-center col-span-1 sm:col-span-2 lg:col-span-3 py-4">
                 <h1 class="text-xl font-bold uppercase bangla-font text-center">
@@ -188,9 +183,6 @@ const loadLevelWordDisplay = (elements) => {
     }
 }
 // Level Word code end here;
-
-
-
 
 
 
