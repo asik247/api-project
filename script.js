@@ -129,9 +129,16 @@ const loadLevelWordDisplay = (elements) => {
         const card = document.createElement("div");
         card.innerHTML = `
          <div class="bg-white shadow-lg rounded-xl p-8 text-center transition hover:shadow-2xl">
-                <h1 class="text-xl font-bold mb-2">${ele.word}</h1>
-                <h2 class="text-gray-500 mb-3">${ele.meaning}</h2>
-                <p class="text-gray-600">${ele.pronunciation}</p>
+                <h1 class="text-2xl font-extrabold mb-2">${ele.word}</h1>
+                <p class="font-semibold mb-2">Meaning / Pronounciation</p>
+                <h2 class="text-2xl mb-3 bangla-font">${ele.meaning}/${ele.pronunciation}</h2>
+                
+                <div class="flex justify-between items-center mb-2">
+          
+                <button class="bg-[#1A91FF10] hover:bg-[#1A91FF80] p-2" ><i class="fa-solid fa-circle-info"></i></button>
+                <button class="bg-[#1A91FF10] hover:bg-[#1A91FF80] p-2" ><i   class="fa-solid fa-volume-high"></i></button>
+            </div>
+               
             </div>
         
         `
