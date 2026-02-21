@@ -104,6 +104,21 @@ const showAllLessions = (lessions) => {
             
             </button>
         `
+        // active btn toggling code start here;
+        // const btn = document.querySelector(".levelBtn");
+        // btn.addEventListener("click",()=>{
+        //     // console.log("all btn");
+        //     const allBtns = document.querySelectorAll(".levelBtn");
+        //     allBtns.forEach(b=>{
+        //         b.classList.remove("avtive-btn");
+        //         console.log(b);
+            
+        //     })
+        //     btn.classList.add("active-btn");
+        //     loadLevelWord(lession.level_no)
+        // })
+        // active btn toggling end start here;
+
         // div.querySelector(".levelBtn").addEventListener("click",()=>{
         //     console.log(lession.level_no);
         // })
@@ -141,7 +156,7 @@ const loadLevelWordDisplay = (elements) => {
     // Emty Lession validation code end here;
     for (let ele of elements) {
         //  console.log(ele.meaning);
-         console.log(ele.pronunciation);
+        //  console.log(ele.pronunciation);
         // if(ele.meaning ==null){
         //     alert("no mening")
         //     return;
