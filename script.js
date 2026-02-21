@@ -116,19 +116,31 @@ learnVocabularies()
 
 
 // Level Word code start here;
-const loadLevelWord = async (id)=>{
+const loadLevelWord = async (id) => {
     // console.log(id);
-    const res = await fetch(`https://openapi.programming-hero.com/api/word/${id}`)
-    const allWord = await res.json();
-    loadLevelWordDisplay(allWord.data);
+    try {
+        const res = await fetch(`https://openapi.programming-hero.com/api/level/${id}`)
+        const allWord = await res.json();
+        console.log(allWord.data);
+
+        loadLevelWordDisplay(allWord.data);
+    } catch (error) {
+        console.log(error);
+    }
 }
 // loadLevelWord in display;
-const loadLevelWordDisplay = (words) =>{
+const loadLevelWordDisplay = (elements) => {
     // console.log(words);
     const levelWordContainer = document.getElementById("levelWordContainer");
     levelWordContainer.innerHTML = '';
-    for(const word of words){
-        console.log(word);
+    for (let ele of elements) {
+        // console.log(ele);
+        const card = document.createElement("div");
+        card.innerHTML = `
+        <p>cat</p>
+        
+        `
+        levelWordContainer.append(card)
     }
 }
 // Level Word code end here;
