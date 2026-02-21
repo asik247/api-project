@@ -57,12 +57,12 @@ subMitBtn.addEventListener("click", (e) => {
     // container.innerHTML = '';
     // let div = document.createElement("div");
     // div.innerHTML = `
-    
+
     //    <div class="border-2 border-gray-500">
     //         <h2>${name}</h2>
     //         <p>${email}</p>
     //     </div>
-    
+
     // `
     // container.appendChild(div)
 
@@ -76,13 +76,13 @@ const getInputFieldValue = (id) => {
 }
 
 // Learn Vocabularies code start hre;
-const learnVocabularies = async () =>{
-    try{
+const learnVocabularies = async () => {
+    try {
         const res = await fetch("https://openapi.programming-hero.com/api/levels/all");
         const lession = await res.json();
-       showAllLessions(lession.data);
-    }catch(error){
-        console.log("Error Message",error);
+        showAllLessions(lession.data);
+    } catch (error) {
+        console.log("Error Message", error);
     }
 }
 // show display all lession;
@@ -91,11 +91,12 @@ const learnVocabularies = async () =>{
 //     "level_no": 1,
 //     "lessonName": "Basic Vocabulary"
 // }
-const showAllLessions = (lessions) =>{
+const showAllLessions = (lessions) => {
     const lessionContainer = document.getElementById("lessionContainer");
     lessionContainer.innerHTML = '';
-    for(const lession of lessions){
-        console.log(lession);
+    for (const lession of lessions) {
+        // console.log(lession);
+        eventDelegtion(lession)
         const div = document.createElement("div");
         div.innerHTML = `
             <button  class="levelBtn btn btn-outline btn-primary"><i class="fa-solid  fa-book-open-reader"></i>
@@ -110,12 +111,25 @@ const showAllLessions = (lessions) =>{
 learnVocabularies()
 // Learn Vocabularies code end hre;
 
-
 // levelBtn code start here;
-let levelBtn = document.querySelector(".levelBtn");
-levelBtn.addEventListener("click",()=>{
-    console.log("levelBtn clicked: not worked");
-})
+
+// Event Delegation systerm code start here;
+const eventDelegtion = (lession) => {
+    document.getElementById("lessionContainer").addEventListener("click", (e) => {
+        if (e.target.closest(".levelBtn")) {
+            console.log("level btn clicked", lession.level_no);
+        }
+    })
+}
+eventDelegtion()
+// Event Delegation systerm code end here;
+
+
+
+
+
+
+
 /*
 Enent Delegation + level btn clicked
 document.getElementById("lessionContainer")
