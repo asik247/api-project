@@ -53,6 +53,9 @@ subMitBtn.addEventListener("click", (e) => {
     } else {
         alert("Submit Successfully")
     }
+    // subMitBtn = ''
+    document.getElementById("name").value = ''
+    document.getElementById("email").value = ''
     // let container = document.getElementById("container");
     // container.innerHTML = '';
     // let div = document.createElement("div");
@@ -97,7 +100,6 @@ const showAllLessions = (lessions) => {
         div.innerHTML = `
             <button id="lessionBtn" onclick="loadLevelWord(${lession.level_no})" class="levelBtn btn btn-outline btn-primary">
             <i class="fa-solid  fa-book-open-reader"></i>
-
             <span> Lession - ${lession.level_no}</span> 
             
             </button>
@@ -113,6 +115,7 @@ learnVocabularies()
 const loadLevelWord = async (id) => {
     try {
         const res = await fetch(`https://openapi.programming-hero.com/api/level/${id}`)
+        // console.log(res);
         const allWord = await res.json();
         // console.log(allWord.data);
         loadLevelWordDisplay(allWord.data);
@@ -124,6 +127,18 @@ const loadLevelWord = async (id) => {
 const loadLevelWordDisplay = (elements) => {
     const levelWordContainer = document.getElementById("levelWordContainer");
     levelWordContainer.innerHTML = '';
+    // Emty Lession validation code start here;
+    if(elements.length == 0){
+         levelWordContainer.innerHTML = `
+           <div class="flex items-center justify-center col-span-1 sm:col-span-2 lg:col-span-3">
+                <h1 class="text-xl font-bold uppercase bangla-font text-center">
+                    “এই পাঠে কোনো শব্দ যোগ করা হয়নি। আপনি পরবর্তী পাঠ বা পূর্ববর্তী পাঠে যেতে পারেন।” ✅
+                </h1>
+            </div>
+         `
+        return;
+    }
+    // Emty Lession validation code end here;
     for (let ele of elements) {
         // console.log(ele);
         const card = document.createElement("div");
