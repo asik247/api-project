@@ -95,7 +95,7 @@ const showAllLessions = (lessions) => {
 
         const div = document.createElement("div");
         div.innerHTML = `
-            <button onclick="loadLevelWord(${lession.level_no})" class="levelBtn btn btn-outline btn-primary">
+            <button id="lessionBtn" onclick="loadLevelWord(${lession.level_no})" class="levelBtn btn btn-outline btn-primary">
             <i class="fa-solid  fa-book-open-reader"></i>
 
             <span> Lession - ${lession.level_no}</span> 
@@ -114,25 +114,18 @@ const loadLevelWord = async (id) => {
     try {
         const res = await fetch(`https://openapi.programming-hero.com/api/level/${id}`)
         const allWord = await res.json();
-        console.log(allWord.data);
+        // console.log(allWord.data);
         loadLevelWordDisplay(allWord.data);
     } catch (error) {
         console.log(error);
     }
 }
 // loadLevelWord in display;
-// {
-//     "id": 87,
-//     "level": 1,
-//     "word": "Sun",
-//     "meaning": "সূর্য",
-//     "pronunciation": "সান"
-// }
 const loadLevelWordDisplay = (elements) => {
     const levelWordContainer = document.getElementById("levelWordContainer");
     levelWordContainer.innerHTML = '';
     for (let ele of elements) {
-        console.log(ele);
+        // console.log(ele);
         const card = document.createElement("div");
         card.innerHTML = `
          <div class="bg-white shadow-lg rounded-xl p-8 text-center transition hover:shadow-2xl">
@@ -146,6 +139,18 @@ const loadLevelWordDisplay = (elements) => {
     }
 }
 // Level Word code end here;
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Learn Vocabularies code end hre;
 
