@@ -95,7 +95,7 @@ const showAllLessions = (lessions) => {
 
         const div = document.createElement("div");
         div.innerHTML = `
-            <button  class="levelBtn btn btn-outline btn-primary">
+            <button onclick="loadLevelWord(${lession.level_no})" class="levelBtn btn btn-outline btn-primary">
             <i class="fa-solid  fa-book-open-reader"></i>
 
             <span> Lession - ${lession.level_no}</span> 
@@ -103,23 +103,47 @@ const showAllLessions = (lessions) => {
             </button>
         `
         // div.querySelector(".levelBtn").addEventListener("click",()=>{
-        //     console.log("Clicked Level:",lession.level_no);
+        //     console.log(lession.level_no);
         // })
+
+
         lessionContainer.appendChild(div)
     }
 }
 learnVocabularies()
+
+
+
+
+// Level Word code start here;
+const loadLevelWord = async (id)=>{
+    // console.log(id);
+    const res = await fetch(`https://openapi.programming-hero.com/api/word/${id}`)
+    const allWord = await res.json();
+    loadLevelWordDisplay(allWord.data);
+}
+// loadLevelWord in display;
+const loadLevelWordDisplay = (words) =>{
+    // console.log(words);
+    const levelWordContainer = document.getElementById("levelWordContainer");
+    levelWordContainer.innerHTML = '';
+    for(const word of words){
+        console.log(word);
+    }
+}
+// Level Word code end here;
+
 // Learn Vocabularies code end hre;
 
 // Event Delegation systerm code start here;
-const eventDelegtion = () => {
-    document.getElementById("lessionContainer").addEventListener("click", (e) => {
-        if (e.target.closest(".levelBtn")) {
-            console.log("level btn clicked", e.target);
-        }
-    })
-}
-eventDelegtion()
+// const eventDelegtion = () => {
+//     document.getElementById("lessionContainer").addEventListener("click", (e) => {
+//         if (e.target.closest(".levelBtn")) {
+//             console.log("level btn clicked", e.target);
+//         }
+//     })
+// }
+// eventDelegtion()
 // Event Delegation systerm code end here;
 
 
