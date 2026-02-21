@@ -105,39 +105,41 @@ const showAllLessions = (lessions) => {
         // div.querySelector(".levelBtn").addEventListener("click",()=>{
         //     console.log(lession.level_no);
         // })
-
-
         lessionContainer.appendChild(div)
     }
 }
 learnVocabularies()
-
-
-
-
 // Level Word code start here;
 const loadLevelWord = async (id) => {
-    // console.log(id);
     try {
         const res = await fetch(`https://openapi.programming-hero.com/api/level/${id}`)
         const allWord = await res.json();
         console.log(allWord.data);
-
         loadLevelWordDisplay(allWord.data);
     } catch (error) {
         console.log(error);
     }
 }
 // loadLevelWord in display;
+// {
+//     "id": 87,
+//     "level": 1,
+//     "word": "Sun",
+//     "meaning": "সূর্য",
+//     "pronunciation": "সান"
+// }
 const loadLevelWordDisplay = (elements) => {
-    // console.log(words);
     const levelWordContainer = document.getElementById("levelWordContainer");
     levelWordContainer.innerHTML = '';
     for (let ele of elements) {
-        // console.log(ele);
+        console.log(ele);
         const card = document.createElement("div");
         card.innerHTML = `
-        <p>cat</p>
+         <div class="bg-white shadow-lg rounded-xl p-8 text-center transition hover:shadow-2xl">
+                <h1 class="text-xl font-bold mb-2">${ele.word}</h1>
+                <h2 class="text-gray-500 mb-3">${ele.meaning}</h2>
+                <p class="text-gray-600">${ele.pronunciation}</p>
+            </div>
         
         `
         levelWordContainer.append(card)
