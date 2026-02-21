@@ -96,11 +96,12 @@ const showAllLessions = (lessions) => {
     lessionContainer.innerHTML = '';
     for (const lession of lessions) {
         // console.log(lession);
-        eventDelegtion(lession)
+        // eventDelegtion(lession)
+
         const div = document.createElement("div");
         div.innerHTML = `
             <button  class="levelBtn btn btn-outline btn-primary"><i class="fa-solid  fa-book-open-reader"></i>
-             Lession - ${lession.level_no}</button>
+            <span> Lession - ${lession.level_no}</span> </button>
         `
         // div.querySelector(".levelBtn").addEventListener("click",()=>{
         //     console.log("Clicked Level:",lession.level_no);
@@ -116,8 +117,12 @@ learnVocabularies()
 // Event Delegation systerm code start here;
 const eventDelegtion = (lession) => {
     document.getElementById("lessionContainer").addEventListener("click", (e) => {
+        // closest sata code;
+        // if(e.target.classList.contains("levelBtn")){
+        //     console.log("level btn licked Not closest",e.target);
+        // }
         if (e.target.closest(".levelBtn")) {
-            console.log("level btn clicked", lession.level_no);
+            console.log("level btn clicked", e.target);
         }
     })
 }
@@ -130,18 +135,3 @@ eventDelegtion()
 
 
 
-/*
-Enent Delegation + level btn clicked
-document.getElementById("lessionContainer")
-.addEventListener("click", function(e){
-
-    if(e.target.closest(".levelBtn")){
-        console.log("Level button clicked");
-    }
-
-});
-// another way;
-div.querySelector(".levelBtn").addEventListener("click", ()=>{
-    console.log("Clicked Level:", lession.level_no);
-});
-*/
