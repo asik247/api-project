@@ -86,11 +86,6 @@ const learnVocabularies = async () => {
     }
 }
 // show display all lession;
-// {
-//     "id": 101,
-//     "level_no": 1,
-//     "lessonName": "Basic Vocabulary"
-// }
 const showAllLessions = (lessions) => {
     const lessionContainer = document.getElementById("lessionContainer");
     lessionContainer.innerHTML = '';
@@ -116,20 +111,12 @@ const showAllLessions = (lessions) => {
 learnVocabularies()
 // Learn Vocabularies code end hre;
 
-// levelBtn code start here;
-
 // Event Delegation systerm code start here;
-const eventDelegtion = (lession) => {
+const eventDelegtion = () => {
     document.getElementById("lessionContainer").addEventListener("click", (e) => {
-        // closest sata code;
-        // console.log("clicked contanier",e.target);
-        // if(e.target.classList.contains("levelBtn")){
-        //     console.log("level btn licked",e.target);
-        // }
-
-        // if (e.target.closest(".levelBtn")) {
-        //     console.log("level btn clicked", e.target);
-        // }
+        if (e.target.closest(".levelBtn")) {
+            console.log("level btn clicked", e.target);
+        }
     })
 }
 eventDelegtion()
