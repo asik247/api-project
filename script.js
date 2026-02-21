@@ -128,8 +128,8 @@ const loadLevelWordDisplay = (elements) => {
     const levelWordContainer = document.getElementById("levelWordContainer");
     levelWordContainer.innerHTML = '';
     // Emty Lession validation code start here;
-    if(elements.length == 0){
-         levelWordContainer.innerHTML = `
+    if (elements.length == 0) {
+        levelWordContainer.innerHTML = `
            <div class="flex items-center justify-center col-span-1 sm:col-span-2 lg:col-span-3">
                 <h1 class="text-xl font-bold uppercase bangla-font text-center">
                     “এই পাঠে কোনো শব্দ যোগ করা হয়নি। আপনি পরবর্তী পাঠ বা পূর্ববর্তী পাঠে যেতে পারেন।” ✅
@@ -140,13 +140,20 @@ const loadLevelWordDisplay = (elements) => {
     }
     // Emty Lession validation code end here;
     for (let ele of elements) {
-        // console.log(ele);
+        //  console.log(ele.meaning);
+         console.log(ele.pronunciation);
+        // if(ele.meaning ==null){
+        //     alert("no mening")
+        //     return;
+        // }
         const card = document.createElement("div");
         card.innerHTML = `
          <div class="bg-white shadow-lg rounded-xl p-8 text-center transition hover:shadow-2xl">
                 <h1 class="text-2xl font-extrabold mb-2">${ele.word}</h1>
                 <p class="font-semibold mb-2">Meaning / Pronounciation</p>
-                <h2 class="text-2xl mb-3 bangla-font">${ele.meaning}/${ele.pronunciation}</h2>
+               <h2 class="text-2xl mb-3 bangla-font">
+                    ${ele.meaning ? ele.meaning : "মর্মার্থ যোগ করা হয়নি"} / ${ele.pronunciation ? ele.pronunciation : "উচ্চারণ নেই"}
+                </h2>
                 
                 <div class="flex justify-between items-center mb-2">
           
