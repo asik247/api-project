@@ -112,7 +112,7 @@ const showAllLessions = (lessions) => {
         //     allBtns.forEach(b=>{
         //         b.classList.remove("avtive-btn");
         //         console.log(b);
-            
+
         //     })
         //     btn.classList.add("active-btn");
         //     loadLevelWord(lession.level_no)
@@ -132,7 +132,7 @@ const loadLevelWord = async (id) => {
         const res = await fetch(`https://openapi.programming-hero.com/api/level/${id}`)
         // console.log(res);
         const allWord = await res.json();
-        // console.log(allWord.data);
+        console.log(allWord.data);
         loadLevelWordDisplay(allWord.data);
     } catch (error) {
         console.log(error);
@@ -145,15 +145,20 @@ const loadLevelWordDisplay = (elements) => {
     // Emty Lession validation code start here;
     if (elements.length == 0) {
         levelWordContainer.innerHTML = `
-           <div class="flex items-center justify-center col-span-1 sm:col-span-2 lg:col-span-3">
+            <div class="flex justify-center items-center col-span-full">
+                <img src="./assets/alert-error.png" alt="" class="w-32">
+            </div>
+           <div class="flex items-center justify-center col-span-1 sm:col-span-2 lg:col-span-3 py-4">
                 <h1 class="text-xl font-bold uppercase bangla-font text-center">
-                    “এই পাঠে কোনো শব্দ যোগ করা হয়নি। আপনি পরবর্তী পাঠ বা পূর্ববর্তী পাঠে যেতে পারেন।” ✅
+                   <span class="text-sky-400 text-3xl"> “এই পাঠে কোনো শব্দ যোগ করা হয়নি।</span> <br><br> 
+                    আপনি পরবর্তী পাঠ বা পূর্ববর্তী পাঠে যেতে পারেন।” ✅
                 </h1>
             </div>
          `
         return;
     }
     // Emty Lession validation code end here;
+
     for (let ele of elements) {
         //  console.log(ele.meaning);
         //  console.log(ele.pronunciation);
