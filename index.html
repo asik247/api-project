@@ -112,14 +112,30 @@
 
             <div class="flex items-center justify-center col-span-1 sm:col-span-2 lg:col-span-3 py-10">
                 <h1 class="text-xl font-bold capitalize bangla-font text-center text-gray-400">
-                    <span class="text-sky-400 text-3xl"> আপনি এখনো কোনো পাঠ নির্বাচন করেননি।</span> <br><br> Please select a lesson.
+                    <span class="text-sky-400 text-3xl"> আপনি এখনো কোনো পাঠ নির্বাচন করেননি।</span> <br><br> Please
+                    select a lesson.
                 </h1>
-              
+
             </div>
         </div>
     </section>
     <!-- Level Word code end here -->
-
+    <!-- modal code start here -->
+    <!-- Open the modal using ID.showModal() method -->
+    <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+    <dialog id="myModal" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+            <h3 class="text-lg font-bold">Hello!</h3>
+            <p class="py-4">Press ESC key or click the button below to close</p>
+            <div class="modal-action">
+                <form method="dialog">
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button  class="btn">Close</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
+    <!-- modal code end here -->
 
 
 
