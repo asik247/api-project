@@ -1,3 +1,9 @@
+const synaminFun = (arr)=>{
+    // console.log(arr);
+    const creatSpan = arr.map((el)=> `<span class = "btn">${el}</span>`);
+    return creatSpan.join(" ");
+}
+
 // Globaly declar name + email;
 const yourName = "Md.Asik"
 const yourEmail = "mdasik855789@gmail.com"
@@ -134,7 +140,7 @@ const loadLevelWordDisplay = (elements) => {
 // })
 // Modal code end here;
 const wordDetails = async (id) => {
-    console.log(id);
+    // console.log(id);
     try {
         const res = await fetch(`https://openapi.programming-hero.com/api/word/${id}`);
         const allWords = await res.json()
@@ -166,15 +172,16 @@ const showWord = (words) => {
                     <p>${words.sentence}</p>
                 </div>
                 <div>
-                    <h3 class="font-bold text-xl" >synonyms</h3>
-                    <a href="#" class="btn btn-outline btn-primary"><i class="fa-regular fa-circle-question"></i>
-                        ${words.synonyms}</a>
-                    <a href="#" class="btn btn-outline btn-primary"><i class="fa-solid fa-book-open-reader"></i>
-                        Learn</a>
-                    <a href="#" class="btn btn-outline btn-primary"><i class="fa-solid fa-arrow-right-from-bracket"></i>
-                        LogOut</a>
+                    <h3 class="font-bold text-xl mb-2" >synonyms</h3>
+                    <div>
+                    
+                         ${synaminFun(words.synonyms)}
+                     </div>
 
                 </div>
+
+                </div>
+                
      
      `
     document.getElementById("myModal").showModal()
