@@ -264,7 +264,7 @@ const displaySoundDetails = (details) => {
 // soundDetails code modal 2nd end here;
 
 
-
+console.log('hi js');
 
 
 
