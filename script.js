@@ -111,7 +111,7 @@ const loadLevelWordDisplay = (elements) => {
                     ${ele.meaning ? ele.meaning : "মর্মার্থ যোগ করা হয়নি"} / ${ele.pronunciation ? ele.pronunciation : "উচ্চারণ নেই"}
                 </h2>
                 <div class="flex justify-between items-center mb-2">
-                <button onclick="myModal.showModal()" class="modalBtn bg-[#1A91FF10] rounded-sm hover:bg-[#1A91FF80] p-2" ><i class="fa-solid fa-circle-info"></i></button>
+                <button onclick="wordDetails(${ele.id})" class="modalBtn bg-[#1A91FF10] rounded-sm hover:bg-[#1A91FF80] p-2" ><i class="fa-solid fa-circle-info"></i></button>
                 <button class="bg-[#1A91FF10] rounded-sm  hover:bg-[#1A91FF80] p-2" ><i   class="fa-solid fa-volume-high"></i></button>
             </div>
             </div>
@@ -133,7 +133,73 @@ const loadLevelWordDisplay = (elements) => {
 //     }
 // })
 // Modal code end here;
+const wordDetails = async (id) => {
+    console.log(id);
+    try {
+        const res = await fetch(`https://openapi.programming-hero.com/api/word/${id}`);
+        const allWords = await res.json()
+        showWord(allWords.data);
+    } catch (error) {
+        console.log(error);
+    }
 
+}
+// show word;
+const showWord = (words) => {
+    //  console.log(words);
+    const modalContainer = document.getElementById("modalContainer");
+    modalContainer.innerHTML = `
+             <div>
+                   <h2>
+                       <span class="font-extrabold text-2xl"> ${words.word} </span>
+                        <span class="pronunciation">
+                         (<i class="fa-solid fa-microphone-lines"></i>: ${words.pronunciation})
+                         </span>
+                    </h2>
+                </div>
+                <div>
+                    <h3 class="font-bold text-xl">Meanign</h3>
+                    <p>${words.meaning}</p>
+                </div>
+                <div>
+                    <h3  class="font-bold text-xl">Example</h3>
+                    <p>${words.sentence}</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-xl" >synonyms</h3>
+                    <a href="#" class="btn btn-outline btn-primary"><i class="fa-regular fa-circle-question"></i>
+                        ${words.synonyms}</a>
+                    <a href="#" class="btn btn-outline btn-primary"><i class="fa-solid fa-book-open-reader"></i>
+                        Learn</a>
+                    <a href="#" class="btn btn-outline btn-primary"><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        LogOut</a>
+
+                </div>
+     
+     `
+    document.getElementById("myModal").showModal()
+    //  for(const word of words){
+    //     console.log(word);
+    //  }
+    // words.forEach(word=>{
+    //     console.log(word);
+    // })
+}
+// {
+//     "word": "Eager",
+//     "meaning": "আগ্রহী",
+//     "pronunciation": "ইগার",
+//     "level": 1,
+//     "sentence": "The kids were eager to open their gifts.",
+//     "points": 1,
+//     "partsOfSpeech": "adjective",
+//     "synonyms": [
+//         "enthusiastic",
+//         "excited",
+//         "keen"
+//     ],
+//     "id": 5
+// }
 
 
 
