@@ -1,6 +1,8 @@
 const synaminFun = (arr) => {
     // console.log(arr);
-    const creatSpan = arr.map((el) => `<span class = "btn">${el}</span>`);
+    const creatSpan = arr.map((el) => 
+       
+        `<span class = "btn">${el}</span>`);
     return creatSpan.join(" ");
 }
 
@@ -13,6 +15,20 @@ const shoundFunk = (arras) =>{
    
     return creatSpan2.join(" ");
 }
+// spinner code start here;
+const spinnerShow = (status) =>{
+    if(status == true){
+        document.getElementById("spinnerId").classList.remove("hidden");
+        document.getElementById("levelWordContainer").classList.add("hidden");
+
+    }
+    else{
+        document.getElementById("spinnerId").classList.add("hidden");
+        document.getElementById("levelWordContainer").classList.remove("hidden");
+    }
+}
+// spinner code end here;
+
 // Globaly declar name + email;
 const yourName = "Md.Asik"
 const yourEmail = "mdasik855789@gmail.com"
@@ -55,6 +71,7 @@ const learnVocabularies = async () => {
 }
 // show display all lession;
 const showAllLessions = (lessions) => {
+   
     const lessionContainer = document.getElementById("lessionContainer");
     lessionContainer.innerHTML = '';
     for (const lession of lessions) {
@@ -78,6 +95,7 @@ const showAllLessions = (lessions) => {
 learnVocabularies()
 // Level Word code start here;
 const loadLevelWord = async (id) => {
+    spinnerShow(true)
     try {
         // Active btn code start here✅✅✅;
         const allBtn = document.querySelectorAll(".levelBtn");
@@ -98,6 +116,7 @@ const loadLevelWord = async (id) => {
 }
 // loadLevelWord in display;
 const loadLevelWordDisplay = (elements) => {
+    
     const levelWordContainer = document.getElementById("levelWordContainer");
     levelWordContainer.innerHTML = '';
     // Emty Lession validation code start here;
@@ -113,6 +132,8 @@ const loadLevelWordDisplay = (elements) => {
                 </h1>
             </div>
          `
+        spinnerShow(false)
+
         return;
     }
     // Emty Lession validation code end here;
@@ -138,6 +159,8 @@ const loadLevelWordDisplay = (elements) => {
         //     console.log("clicked modal:",e.target);
         // })
         levelWordContainer.append(card)
+        spinnerShow(false)
+
     }
 }
 // Level Word code end here;
@@ -184,7 +207,7 @@ const showWord = (words) => {
                 <div>
                     <h3 class="font-bold text-xl mb-2" >synonyms</h3>
                     <div>
-                    
+                       
                          ${synaminFun(words.synonyms)}
                      </div>
 
