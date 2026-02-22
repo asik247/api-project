@@ -66,11 +66,11 @@ const loadLevelWord = async (id) => {
     try {
         // Active btn code start here✅✅✅;
         const allBtn = document.querySelectorAll(".levelBtn");
-        allBtn.forEach(btn=>{
+        allBtn.forEach(btn => {
             btn.classList.remove("active-btn")
         })
         const thisBtn = document.getElementById(`lessionBtn-${id}`);
-        if(thisBtn){
+        if (thisBtn) {
             thisBtn.classList.add("active-btn")
         }
         // Active btn code end here✅✅✅;
@@ -111,15 +111,30 @@ const loadLevelWordDisplay = (elements) => {
                     ${ele.meaning ? ele.meaning : "মর্মার্থ যোগ করা হয়নি"} / ${ele.pronunciation ? ele.pronunciation : "উচ্চারণ নেই"}
                 </h2>
                 <div class="flex justify-between items-center mb-2">
-                <button class="bg-[#1A91FF10] rounded-sm hover:bg-[#1A91FF80] p-2" ><i class="fa-solid fa-circle-info"></i></button>
+                <button class="modalBtn bg-[#1A91FF10] rounded-sm hover:bg-[#1A91FF80] p-2" ><i class="fa-solid fa-circle-info"></i></button>
                 <button class="bg-[#1A91FF10] rounded-sm  hover:bg-[#1A91FF80] p-2" ><i   class="fa-solid fa-volume-high"></i></button>
             </div>
             </div>
         `
+        // modal cod 2nd way;
+        // const modalDetails = card.querySelector(".modalBtn");
+        // modalDetails.addEventListener("click", (e) => {
+        //     console.log("clicked modal:",e.target);
+        // })
         levelWordContainer.append(card)
     }
 }
 // Level Word code end here;
+// Modal code start here;
+// const levelWordContainer = document.getElementById("levelWordContainer");
+// levelWordContainer.addEventListener("click",(e)=>{
+//     if(e.target.closest(".modalBtn")){
+//         console.log("modal btn clicked",e.target);
+//     }
+// })
+// Modal code end here;
+
+
 
 
 
