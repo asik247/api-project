@@ -1,9 +1,18 @@
-const synaminFun = (arr)=>{
+const synaminFun = (arr) => {
     // console.log(arr);
-    const creatSpan = arr.map((el)=> `<span class = "btn">${el}</span>`);
+    const creatSpan = arr.map((el) => `<span class = "btn">${el}</span>`);
     return creatSpan.join(" ");
 }
 
+const shoundFunk = (arras) =>{
+    // console.log(arras);
+    const creatSpan2 = arras.map((ar)=> `<span class="btn">${ar}</span>`);
+
+       
+       
+   
+    return creatSpan2.join(" ");
+}
 // Globaly declar name + email;
 const yourName = "Md.Asik"
 const yourEmail = "mdasik855789@gmail.com"
@@ -108,6 +117,7 @@ const loadLevelWordDisplay = (elements) => {
     }
     // Emty Lession validation code end here;
     for (let ele of elements) {
+        // console.log(ele.id);
         const card = document.createElement("div");
         card.innerHTML = `
          <div class="bg-white shadow-lg rounded-xl p-8 text-center transition hover:shadow-2xl">
@@ -118,7 +128,7 @@ const loadLevelWordDisplay = (elements) => {
                 </h2>
                 <div class="flex justify-between items-center mb-2">
                 <button onclick="wordDetails(${ele.id})" class="modalBtn bg-[#1A91FF10] rounded-sm hover:bg-[#1A91FF80] p-2" ><i class="fa-solid fa-circle-info"></i></button>
-                <button class="bg-[#1A91FF10] rounded-sm  hover:bg-[#1A91FF80] p-2" ><i   class="fa-solid fa-volume-high"></i></button>
+                <button  onclick="soundDetails(${ele.id})" class="bg-[#1A91FF10] rounded-sm  hover:bg-[#1A91FF80] p-2" ><i   class="fa-solid fa-volume-high"></i></button>
             </div>
             </div>
         `
@@ -138,7 +148,7 @@ const loadLevelWordDisplay = (elements) => {
 //         console.log("modal btn clicked",e.target);
 //     }
 // })
-// Modal code end here;
+// Modal code end here✅✅✅;
 const wordDetails = async (id) => {
     // console.log(id);
     try {
@@ -208,6 +218,50 @@ const showWord = (words) => {
 //     "id": 5
 // }
 
+// soundDetails code modal 2nd start here;
+const soundDetails = async (id) => {
+    // console.log(id);
+    const res = await fetch(`https://openapi.programming-hero.com/api/word/${id}`);
+    const data = await res.json();
+    displaySoundDetails(data.data);
+}
+// display soundDetails code;
+const displaySoundDetails = (details) => {
+    // console.log(details);
+    const shoundDetailsContainer = document.getElementById("shoundDetailsContainer");
+    shoundDetailsContainer.innerHTML = `
+    
+            <div>
+                   <h2>
+                       <span class="font-extrabold text-2xl"> ${details.word} </span>
+                        <span class="pronunciation">
+                         (<i class="fa-solid fa-microphone-lines"></i>: ${details.pronunciation})
+                         </span>
+                    </h2>
+            </div>
+                <div>
+                    <h3 class="font-bold text-xl">Meanign</h3>
+                    <p>${details.meaning}</p>
+                </div>
+                <div>
+                    <h3  class="font-bold text-xl">Example</h3>
+                    <p>${details.sentence}</p>
+             </div>
+
+             <div>
+                    <h2 class="font-bold text-xl mb-2">Synanim</h2>
+                    <div >
+                       
+                       ${shoundFunk(details.synonyms)}
+                    </div>
+                </div>
+
+             </div>
+    
+    `
+    document.getElementById("my_modal").showModal()
+}
+// soundDetails code modal 2nd end here;
 
 
 
