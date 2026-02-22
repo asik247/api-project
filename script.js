@@ -27,7 +27,29 @@ const spinnerShow = (status) =>{
         document.getElementById("levelWordContainer").classList.remove("hidden");
     }
 }
-// spinner code end here;
+const spinnerShow2 = (status) =>{
+    if(status == true){
+        document.getElementById("spinnerId").classList.remove("hidden");
+        document.getElementById("modalContainer").classList.add("hidden");
+
+    }
+    else{
+        document.getElementById("spinnerId").classList.add("hidden");
+        document.getElementById("modalContainer").classList.remove("hidden");
+    }
+}
+const spinnerShow3 = (status) =>{
+    if(status == true){
+        document.getElementById("spinnerId").classList.remove("hidden");
+        document.getElementById("shoundDetailsContainer").classList.add("hidden");
+
+    }
+    else{
+        document.getElementById("spinnerId").classList.add("hidden");
+        document.getElementById("shoundDetailsContainer").classList.remove("hidden");
+    }
+}
+// spinner code end here; modalContainer
 
 // Globaly declar name + email;
 const yourName = "Md.Asik"
@@ -173,6 +195,7 @@ const loadLevelWordDisplay = (elements) => {
 // })
 // Modal code end here✅✅✅;
 const wordDetails = async (id) => {
+    spinnerShow2(true)
     // console.log(id);
     try {
         const res = await fetch(`https://openapi.programming-hero.com/api/word/${id}`);
@@ -185,6 +208,8 @@ const wordDetails = async (id) => {
 }
 // show word;
 const showWord = (words) => {
+   
+
     //  console.log(words);
     const modalContainer = document.getElementById("modalContainer");
     modalContainer.innerHTML = `
@@ -218,6 +243,8 @@ const showWord = (words) => {
      
      `
     document.getElementById("myModal").showModal()
+    spinnerShow2(false)
+
     //  for(const word of words){
     //     console.log(word);
     //  }
@@ -244,6 +271,8 @@ const showWord = (words) => {
 // soundDetails code modal 2nd start here;
 const soundDetails = async (id) => {
     // console.log(id);
+    spinnerShow3(true)
+
     const res = await fetch(`https://openapi.programming-hero.com/api/word/${id}`);
     const data = await res.json();
     displaySoundDetails(data.data);
@@ -283,6 +312,8 @@ const displaySoundDetails = (details) => {
     
     `
     document.getElementById("my_modal").showModal()
+    spinnerShow3(true)
+
 }
 // soundDetails code modal 2nd end here;
 
