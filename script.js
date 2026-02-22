@@ -98,8 +98,14 @@ const showAllLessions = (lessions) => {
 
         const div = document.createElement("div");
         div.innerHTML = `
-            <button id="lessionBtn-${lession.level_no}" onclick="loadLevelWord(${lession.level_no})" class="levelBtn btn btn-outline btn-primary">
+            <button id="lessionBtn-${lession.level_no}" 
+
+            onclick="loadLevelWord(${lession.level_no})" 
+
+            class="levelBtn btn btn-outline btn-primary">
+
             <i class="fa-solid  fa-book-open-reader"></i>
+
             <span> Lession - ${lession.level_no}</span> 
             
             </button>
@@ -110,19 +116,47 @@ const showAllLessions = (lessions) => {
 learnVocabularies()
 // Level Word code start here;
 const loadLevelWord = async (id) => {
-    // console.log("lession");
+    // console.log(id);
     try {
         // Active btn code start here✅✅✅;
-        const levelBtn = document.querySelectorAll(".levelBtn");
-        // console.log(levelBtn);
-        levelBtn.forEach(btn=>{
-            // console.log(btn);
+        // const levelBtn = document.querySelectorAll(".levelBtn");
+        
+        // levelBtn.forEach(btn=>{
+          
+        //     btn.classList.remove("active-btn")
+        // })
+        // const lessionBtn = document.getElementById(`lessionBtn-${id}`);
+        // if(lessionBtn){
+        //     lessionBtn.classList.add("active-btn")
+        // }
+
+        const allBtn = document.querySelectorAll(".levelBtn");
+        allBtn.forEach(btn=>{
             btn.classList.remove("active-btn")
         })
-        const lessionBtn = document.getElementById(`lessionBtn-${id}`);
-        if(lessionBtn){
-            lessionBtn.classList.add("active-btn")
+        const thisBtn = document.getElementById(`lessionBtn-${id}`);
+        if(thisBtn){
+            thisBtn.classList.add("active-btn")
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         // Active btn code end here✅✅✅;
         const res = await fetch(`https://openapi.programming-hero.com/api/level/${id}`);
         const allWord = await res.json();
