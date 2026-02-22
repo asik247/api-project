@@ -312,7 +312,7 @@ const displaySoundDetails = (details) => {
     
     `
     document.getElementById("my_modal").showModal()
-    spinnerShow3(true)
+    spinnerShow3(false)
 
 }
 // soundDetails code modal 2nd end here;
