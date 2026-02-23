@@ -10,45 +10,64 @@ const shoundFunk = (arras) => {
     // console.log(arras);
     const creatSpan2 = arras.map((ar) => `<span class="btn">${ar}</span>`);
 
-
-
-
     return creatSpan2.join(" ");
 }
 // spinner code start here;
-const spinnerShow = (status) => {
-    if (status == true) {
-        document.getElementById("spinnerId").classList.remove("hidden");
-        document.getElementById("levelWordContainer").classList.add("hidden");
+// const spinnerShow = (status) => {
+//     if (status == true) {
+//         document.getElementById("spinnerId").classList.remove("hidden");
+//         document.getElementById("levelWordContainer").classList.add("hidden");
 
-    }
-    else {
-        document.getElementById("spinnerId").classList.add("hidden");
-        document.getElementById("levelWordContainer").classList.remove("hidden");
-    }
-}
-const spinnerShow2 = (status) => {
-    if (status == true) {
-        document.getElementById("spinnerId").classList.remove("hidden");
-        document.getElementById("modalContainer").classList.add("hidden");
+//     }
+//     else {
+//         document.getElementById("spinnerId").classList.add("hidden");
+//         document.getElementById("levelWordContainer").classList.remove("hidden");
+//     }
+// }
+// const spinnerShow2 = (status) => {
+//     if (status == true) {
+//         document.getElementById("spinnerId").classList.remove("hidden");
+//         document.getElementById("modalContainer").classList.add("hidden");
 
-    }
-    else {
-        document.getElementById("spinnerId").classList.add("hidden");
-        document.getElementById("modalContainer").classList.remove("hidden");
-    }
-}
-const spinnerShow3 = (status) => {
-    if (status == true) {
-        document.getElementById("spinnerId").classList.remove("hidden");
-        document.getElementById("shoundDetailsContainer").classList.add("hidden");
+//     }
+//     else {
+//         document.getElementById("spinnerId").classList.add("hidden");
+//         document.getElementById("modalContainer").classList.remove("hidden");
+//     }
+// }
+// const spinnerShow3 = (status) => {
+//     if (status == true) {
+//         document.getElementById("spinnerId").classList.remove("hidden");
+//         document.getElementById("shoundDetailsContainer").classList.add("hidden");
 
+//     }
+//     else {
+//         document.getElementById("spinnerId").classList.add("hidden");
+//         document.getElementById("shoundDetailsContainer").classList.remove("hidden");
+//     }
+// }
+
+
+
+
+const toggleSpinner = (spinnerId, containerId, isLoading) => {
+    const spinner = document.getElementById(spinnerId);
+    const container = document.getElementById(containerId);
+
+    if (!spinner || !container) return;
+
+    if (isLoading) {
+        spinner.classList.remove("hidden");
+        container.classList.add("hidden");
+    } else {
+        spinner.classList.add("hidden");
+        container.classList.remove("hidden");
     }
-    else {
-        document.getElementById("spinnerId").classList.add("hidden");
-        document.getElementById("shoundDetailsContainer").classList.remove("hidden");
-    }
-}
+};
+// spineer funk;
+
+
+
 const vocaBullarySpinner = (loading) => {
     if (loading) {
         document.getElementById("spinnerId").classList.remove("hidden");
@@ -88,7 +107,7 @@ subMitBtn.addEventListener("click", (e) => {
 
 // nav btn clicked code here;
 const ulContainer = document.getElementById("ulContainer");
-ulContainer.addEventListener("click",(e)=>{
+ulContainer.addEventListener("click", (e) => {
     // console.log(e.target);
     alert("hi iam nav btn")
 })
@@ -138,7 +157,8 @@ const showAllLessions = (lessions) => {
 learnVocabularies()
 // Level Word code start here;
 const loadLevelWord = async (id) => {
-    spinnerShow(true)
+    // spinnerShow(true)
+    toggleSpinner("spinnerId", "levelWordContainer", true);
     try {
         // Active btn code start here✅✅✅;
         const allBtn = document.querySelectorAll(".levelBtn");
@@ -175,7 +195,8 @@ const loadLevelWordDisplay = (elements) => {
                 </h1>
             </div>
          `
-        spinnerShow(false)
+        // spinnerShow(false)
+        toggleSpinner("spinnerId", "levelWordContainer", false);
 
         return;
     }
@@ -202,7 +223,8 @@ const loadLevelWordDisplay = (elements) => {
         //     console.log("clicked modal:",e.target);
         // })
         levelWordContainer.append(card)
-        spinnerShow(false)
+        // spinnerShow(false)
+        toggleSpinner("spinnerId", "levelWordContainer", false);
 
     }
 }
@@ -216,7 +238,8 @@ const loadLevelWordDisplay = (elements) => {
 // })
 // Modal code end here✅✅✅;
 const wordDetails = async (id) => {
-    spinnerShow2(true)
+    // spinnerShow2(true)
+    toggleSpinner("spinnerId", "levelWordContainer", true);
     // console.log(id);
     try {
         const res = await fetch(`https://openapi.programming-hero.com/api/word/${id}`);
@@ -264,7 +287,8 @@ const showWord = (words) => {
      
      `
     document.getElementById("myModal").showModal()
-    spinnerShow2(false)
+    // spinnerShow2(false)
+    toggleSpinner("spinnerId", "levelWordContainer", false);
 
     //  for(const word of words){
     //     console.log(word);
@@ -292,7 +316,8 @@ const showWord = (words) => {
 // soundDetails code modal 2nd start here;
 const soundDetails = async (id) => {
     // console.log(id);
-    spinnerShow3(true)
+    // spinnerShow3(true)
+    toggleSpinner("spinnerId", "levelWordContainer", true);
 
     const res = await fetch(`https://openapi.programming-hero.com/api/word/${id}`);
     const data = await res.json();
@@ -333,20 +358,43 @@ const displaySoundDetails = (details) => {
     
     `
     document.getElementById("my_modal").showModal()
-    spinnerShow3(false)
+    // spinnerShow3(false)
+    toggleSpinner("spinnerId", "levelWordContainer", false);
 
 }
 // soundDetails code modal 2nd end here;
 
 
 // Search code start hre;
-document.getElementById("searchBtn").addEventListener('click',()=>{
-  const inputField =   document.getElementById("serchField")
- const inputFieldValue = inputField.value.trim().toLowerCase();
- console.log(inputFieldValue);
- fetch("https://openapi.programming-hero.com/api/words/all")
- 
-//  loadLevelWordDisplay
+document.getElementById("searchBtn").addEventListener('click', () => {
+    const inputField = document.getElementById("serchField")
+    const inputFieldValue = inputField.value.trim().toLowerCase();
+    // console.log(inputFieldValue);
+    if (!inputFieldValue) {
+        alert("Please type a word");
+        return;
+    }
+    // spinnerShow(true);
+    toggleSpinner("spinnerId", "levelWordContainer", true);
+    fetch("https://openapi.programming-hero.com/api/words/all")
+        .then(res => res.json())
+        .then(data => {
+            // console.log(data.data);
+            const datas = data.data;
+            const filterData = datas.filter(w =>
+                w.word.toLowerCase().includes(inputFieldValue)
+            );
+            const allBtn = document.querySelectorAll(".levelBtn");
+            allBtn.forEach(btn => {
+                btn.classList.remove("active-btn")
+            })
+
+            loadLevelWordDisplay(filterData)
+            // spinnerShow(false);
+            toggleSpinner("spinnerId", "levelWordContainer", false);
+            
+        })
+    
 })
 // Search code end hre;
 
