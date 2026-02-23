@@ -48,8 +48,7 @@ const shoundFunk = (arras) => {
 // }
 
 
-
-
+// spineer funk;
 const toggleSpinner = (spinnerId, containerId, isLoading) => {
     const spinner = document.getElementById(spinnerId);
     const container = document.getElementById(containerId);
@@ -65,7 +64,6 @@ const toggleSpinner = (spinnerId, containerId, isLoading) => {
     }
 };
 // spineer funk;
-
 
 
 const vocaBullarySpinner = (loading) => {
@@ -363,8 +361,6 @@ const displaySoundDetails = (details) => {
 
 }
 // soundDetails code modal 2nd end here;
-
-
 // Search code start hre;
 document.getElementById("searchBtn").addEventListener('click', () => {
     const inputField = document.getElementById("serchField")
