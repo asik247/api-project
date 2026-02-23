@@ -344,6 +344,8 @@ document.getElementById("searchBtn").addEventListener('click',()=>{
   const inputField =   document.getElementById("serchField")
  const inputFieldValue = inputField.value.trim().toLowerCase();
  console.log(inputFieldValue);
+ fetch("https://openapi.programming-hero.com/api/words/all")
+ 
 //  loadLevelWordDisplay
 })
 // Search code end hre;
