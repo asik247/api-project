@@ -1,52 +1,61 @@
 const synaminFun = (arr) => {
     // console.log(arr);
-    const creatSpan = arr.map((el) => 
-       
+    const creatSpan = arr.map((el) =>
+
         `<span class = "btn">${el}</span>`);
     return creatSpan.join(" ");
 }
 
-const shoundFunk = (arras) =>{
+const shoundFunk = (arras) => {
     // console.log(arras);
-    const creatSpan2 = arras.map((ar)=> `<span class="btn">${ar}</span>`);
+    const creatSpan2 = arras.map((ar) => `<span class="btn">${ar}</span>`);
 
-       
-       
-   
+
+
+
     return creatSpan2.join(" ");
 }
 // spinner code start here;
-const spinnerShow = (status) =>{
-    if(status == true){
+const spinnerShow = (status) => {
+    if (status == true) {
         document.getElementById("spinnerId").classList.remove("hidden");
         document.getElementById("levelWordContainer").classList.add("hidden");
 
     }
-    else{
+    else {
         document.getElementById("spinnerId").classList.add("hidden");
         document.getElementById("levelWordContainer").classList.remove("hidden");
     }
 }
-const spinnerShow2 = (status) =>{
-    if(status == true){
+const spinnerShow2 = (status) => {
+    if (status == true) {
         document.getElementById("spinnerId").classList.remove("hidden");
         document.getElementById("modalContainer").classList.add("hidden");
 
     }
-    else{
+    else {
         document.getElementById("spinnerId").classList.add("hidden");
         document.getElementById("modalContainer").classList.remove("hidden");
     }
 }
-const spinnerShow3 = (status) =>{
-    if(status == true){
+const spinnerShow3 = (status) => {
+    if (status == true) {
         document.getElementById("spinnerId").classList.remove("hidden");
         document.getElementById("shoundDetailsContainer").classList.add("hidden");
 
     }
-    else{
+    else {
         document.getElementById("spinnerId").classList.add("hidden");
         document.getElementById("shoundDetailsContainer").classList.remove("hidden");
+    }
+}
+const vocaBullarySpinner = (loading) => {
+    if (loading) {
+        document.getElementById("spinnerId").classList.remove("hidden");
+        document.getElementById("lessionContainer").classList.add("hidden");
+    } else {
+        document.getElementById("spinnerId").classList.add("hidden");
+        document.getElementById("lessionContainer").classList.remove("hidden");
     }
 }
 // spinner code end here; modalContainer
@@ -83,6 +92,7 @@ const getInputFieldValue = (id) => {
 }
 // Learn Vocabularies code start hre;
 const learnVocabularies = async () => {
+    vocaBullarySpinner(true)
     try {
         const res = await fetch("https://openapi.programming-hero.com/api/levels/all");
         const lession = await res.json();
@@ -93,7 +103,7 @@ const learnVocabularies = async () => {
 }
 // show display all lession;
 const showAllLessions = (lessions) => {
-   
+
     const lessionContainer = document.getElementById("lessionContainer");
     lessionContainer.innerHTML = '';
     for (const lession of lessions) {
@@ -112,6 +122,8 @@ const showAllLessions = (lessions) => {
             </button>
         `
         lessionContainer.appendChild(div)
+        vocaBullarySpinner(false)
+
     }
 }
 learnVocabularies()
@@ -138,7 +150,7 @@ const loadLevelWord = async (id) => {
 }
 // loadLevelWord in display;
 const loadLevelWordDisplay = (elements) => {
-    
+
     const levelWordContainer = document.getElementById("levelWordContainer");
     levelWordContainer.innerHTML = '';
     // Emty Lession validation code start here;
@@ -208,7 +220,7 @@ const wordDetails = async (id) => {
 }
 // show word;
 const showWord = (words) => {
-   
+
 
     //  console.log(words);
     const modalContainer = document.getElementById("modalContainer");
