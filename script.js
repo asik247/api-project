@@ -339,7 +339,14 @@ const displaySoundDetails = (details) => {
 // soundDetails code modal 2nd end here;
 
 
-console.log('hello js');
+// Search code start hre;
+document.getElementById("searchBtn").addEventListener('click',()=>{
+  const inputField =   document.getElementById("serchField")
+ const inputFieldValue = inputField.value.trim().toLowerCase();
+ console.log(inputFieldValue);
+//  loadLevelWordDisplay
+})
+// Search code end hre;
 
 
 
