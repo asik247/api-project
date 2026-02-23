@@ -84,6 +84,15 @@ subMitBtn.addEventListener("click", (e) => {
     document.getElementById("name").value = ''
     document.getElementById("email").value = ''
 })
+
+
+// nav btn clicked code here;
+const ulContainer = document.getElementById("ulContainer");
+ulContainer.addEventListener("click",(e)=>{
+    // console.log(e.target);
+    alert("hi iam nav btn")
+})
+// nav btn clicked code here;
 // Form submit code end here;
 
 // Reusable funk code;
